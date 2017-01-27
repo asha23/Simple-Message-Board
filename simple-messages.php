@@ -434,7 +434,7 @@ function messages_shortcode() {
 		foreach($row as $rows):
 ?>
 
-			<div class="message-block col-md-4 col-sm-6 col-xs-12 iso">
+			<div class="message-block col-md-4 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
 
 					<div class="panel-heading">
@@ -589,11 +589,11 @@ function sm_add_record_callback() {
 
 		// Send email to us
 
-		$to      = 'awhiting@thisispegasus.co.uk, rmatheou@thisispegasus.co.uk, emadgwick@thisispegasus.co.uk';
-		$subject = $from .' created a new message on the Trek for Kids Website';
+		$to      = "'" . get_option("admin_email") . "'";
+		$subject = $from .' created a new message.';
 		$the_message = 'A new message has been created and is in the queue for moderation.';
-		$headers = 'From: donotreply@trekforkids.com' . "\r\n" .
-		    'Reply-To: donotreply@trekforkids.com' . "\r\n" .
+		$headers = 'From: donotreply@nowhere.com' . "\r\n" .
+		    'Reply-To: donotreply@nowhere.com' . "\r\n" .
 		    'X-Mailer: PHP/' . phpversion();
 
 		mail($to, $subject, $the_message, $headers);
