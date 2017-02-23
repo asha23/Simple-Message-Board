@@ -1,8 +1,8 @@
-# Wordpress Simple Message Board
+# Wordpress Simple Message Board Plugin
 
-This is a moderated WordPress message board. It works independently from the comments system and is designed for simple use.
+This is a moderated WordPress message board plugin. It works independently from the comments system and is designed for simple use. 
 
-A new table is created in your database called _messages 
+A new table is created in your database called _messages
 
 ## Shortcodes
 
