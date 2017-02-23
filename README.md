@@ -4,6 +4,8 @@ This is a moderated WordPress message board plugin. It works independently from 
 
 A new table is created in your database called _messages - This allows you to track the messages independently of your WordPress tables.
 
+I'm aware that it's by no means perfect at this point. It has been used on a production website and works reasonably well. However there is always room for improvement :smiley:
+
 ## Shortcodes
 
 ``` [messages_teaser] ```
@@ -22,9 +24,9 @@ Creates full message
 
 This uses Bower for dependencies. You might want to edit these as you see fit. It uses bootstrap out of the box for styling and masonry to create the blocks. Matchheight is also included if you prefer this option to arrange you columns. Cycle 2 slider has been used for the message teaser.
 
-Edit the scripts in frontend.php to adjust these if you like.
+Edit the scripts in ``` frontend.php ``` to adjust these if you like.
 
-Frontend.php is also where all the HTML is created, edit this as you like.
+``` frontend.php ``` is also where all the HTML is created, edit this as you like.
 
 # Roadmap/Todo
 
