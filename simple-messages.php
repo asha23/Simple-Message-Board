@@ -1,10 +1,10 @@
 <?php
 
 /*
-	Plugin Name: Simple Messageboard Frontend
+	Plugin Name: Simple Moderated Messageboard
 	Plugin URI:
 	Description: A simple plugin to create a moderated message system
-	Version: 0.2
+	Version: 0.3
 	Author: Ash Whiting
 	Author URI:
 	License: MIT
@@ -13,7 +13,7 @@
 ob_start();
 
 /**
-* Preliminary stuff - Install some tables extend the class
+* Preliminary stuff - Install some tables, extend the class
 */
 
 /** Do all the scripts
@@ -22,7 +22,6 @@ ob_start();
 function sm_scripts_backend() {
 	wp_enqueue_script( 'sm_script', plugins_url( 'lib/script.js' , __FILE__ ), array('jquery'), "1.0.0", true );
 	wp_register_style( 'sm_styles', plugins_url( 'css/admin-style.css' , __FILE__ ), false, '1.0.0' );
-
 	wp_enqueue_style( 'sm_styles' );
 }
 
@@ -452,7 +451,7 @@ function messages_shortcode() {
 
 							<div class="original-lang">
 								<div class="inner">
-									<?php echo $rows->sm_message; ?>
+									<?php echo stripslashes($rows->sm_message); ?>
 								</div>
 							</div>
 
@@ -570,7 +569,7 @@ function sm_add_record_callback() {
 	$email 		= $_POST["email"];
 	$from 		= $_POST["from"];
 	$to 		= $_POST["to"];
-	$message 	= $_POST["message"];
+	$message 	= stripslashes($_POST["message"]);
 	$location 	= $_POST["location"];
 
 	$rows_affected = $wpdb->insert( $table_name, array(
@@ -584,7 +583,7 @@ function sm_add_record_callback() {
 		'sm_location'	=> $location
   	));
 
-	if ($rows_affected == 1) {
+	if ($rows_affected == 1) :
 		echo "<div class='success-message'>Thanks, we have received your message. It has been added to our submission queue and we will approve it shortly.</div>";
 
 		// Send email to us
@@ -598,19 +597,19 @@ function sm_add_record_callback() {
 
 		mail($to, $subject, $the_message, $headers);
 
-	} else {
+	else:
 		echo "<div class='success-message'>Error, something has gone wrong. Please try again later.</div>";
-	}
+	endif;
 
 	die();
 }
 
 function limit_text($text, $limit) {
-      if (str_word_count($text, 0) > $limit) {
+      if (str_word_count($text, 0) > $limit):
           $words = str_word_count($text, 2);
           $pos = array_keys($words);
           $text = substr($text, 0, $pos[$limit]) . ' ...';
-      }
+      endif;
       return $text;
 }
 
@@ -645,7 +644,7 @@ function message_teaser_shortcode() {
 					data-cycle-slides="> .message-slide"
 					data-cycle-pause-on-hover="true"
 				>
-					' . $the_message . '
+					' . stripslashes($the_message) . '
 				</div>
 
 				<div class="message-links">
