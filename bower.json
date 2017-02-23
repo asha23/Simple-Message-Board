@@ -1,0 +1,21 @@
+{
+  "name": "Simple-Message-Board",
+  "homepage": "https://github.com/asha23/Simple-Message-Board",
+  "authors": [
+    "Ash Whiting <awhiting@thisispegasus.co.uk>"
+  ],
+  "description": "Bower files for the Simple Message Board",
+  "main": "",
+  "keywords": [
+    "Wordpress",
+    "Plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
