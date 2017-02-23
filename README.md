@@ -1,4 +1,8 @@
-# Simple-Message-Board
+# Wordpress Simple Message Board
+
+This is a moderated WordPress message board. It works independently from the comments system and is designed for simple use.
+
+A new table is created in your database called _messages 
 
 ## Shortcodes
 
