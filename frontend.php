@@ -1,5 +1,9 @@
 <?php
 
+// Edit these scripts if you don't need them
+
+// Todo - Make these a settings option
+
 function sm_scripts_frontend() {
 	wp_enqueue_script( 'sm_validator', plugins_url( 'lib/validator.min.js' , __FILE__ ), array('jquery'), "1.0.0", true );
 	wp_enqueue_script( 'bootstrap-js', plugins_url( 'bower_components/bootstrap/dist/js/bootstrap.min.js' , __FILE__ ), array('jquery'), "1.0.0", true );
@@ -16,6 +20,11 @@ add_action( 'wp_enqueue_scripts', 'sm_scripts_frontend' );
 * the theme scripts file.
 * Shortcode [messages]
 * =============================================================================== */
+
+/*
+	Todo remove the Bootstrap styling as a settings option
+	In the meantime, style this how you like
+*/
 
 function messages_shortcode() {
 	global $wpdb;
@@ -59,6 +68,11 @@ function messages_shortcode() {
 }
 
 add_shortcode('messages', 'messages_shortcode');
+
+/*
+	Todo remove the Bootstrap styling as a settings option
+	In the meantime, style this how you like
+*/
 
 function messages_form_shortcode() {
 	$html = '
@@ -154,24 +168,24 @@ add_action( 'wp_ajax_nopriv_sm_add_record', 'sm_add_record_callback' );
 
 function sm_add_record_callback() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . "messages";
-	$time_now = date("Y-m-d H:i:s");
+	$table_name 		= $wpdb->prefix . "messages";
+	$time_now			= date("Y-m-d H:i:s");
 
-	$email 		= $_POST["email"];
-	$from 		= $_POST["from"];
-	$to 		= $_POST["to"];
-	$message 	= stripslashes($_POST["message"]);
-	$location 	= $_POST["location"];
+	$email 				= $_POST["email"];
+	$from 				= $_POST["from"];
+	$to 				= $_POST["to"];
+	$message 			= stripslashes($_POST["message"]);
+	$location 			= $_POST["location"];
 
-	$rows_affected = $wpdb->insert( $table_name, array(
-		'id' 			=> null,
-		'time'			=> current_time('mysql'),
-		'sm_email' 		=> $email,
-		'sm_to' 		=> $to,
-		'sm_from' 		=> $from,
-		'sm_message' 	=> $message,
-		'sm_moderated' 	=> "0",
-		'sm_location'	=> $location
+	$rows_affected 		= $wpdb->insert( $table_name, array(
+			'id' 			=> null,
+			'time'			=> current_time('mysql'),
+			'sm_email' 		=> $email,
+			'sm_to' 		=> $to,
+			'sm_from' 		=> $from,
+			'sm_message' 	=> $message,
+			'sm_moderated' 	=> "0",
+			'sm_location'	=> $location
   	));
 
 	if ($rows_affected == 1) :
@@ -179,12 +193,12 @@ function sm_add_record_callback() {
 
 		// Send email to us
 
-		$to      = "'" . get_option("admin_email") . "'";
-		$subject = $from .' created a new message.';
-		$the_message = 'A new message has been created and is in the queue for moderation.';
-		$headers = 'From: donotreply@nowhere.com' . "\r\n" .
-		    'Reply-To: donotreply@nowhere.com' . "\r\n" .
-		    'X-Mailer: PHP/' . phpversion();
+		$to     		= "'" . get_option("admin_email") . "'";
+		$subject 		= $from .' created a new message.';
+		$the_message 	= 'A new message has been created and is in the queue for moderation.';
+		$headers 		= 'From: donotreply@nowhere.com' . "\r\n" .
+		    				'Reply-To: donotreply@nowhere.com' . "\r\n" .
+		    				'X-Mailer: PHP/' . phpversion();
 
 		mail($to, $subject, $the_message, $headers);
 
@@ -197,21 +211,21 @@ function sm_add_record_callback() {
 
 function limit_text($text, $limit) {
       if (str_word_count($text, 0) > $limit):
-          $words = str_word_count($text, 2);
-          $pos = array_keys($words);
-          $text = substr($text, 0, $pos[$limit]) . ' ...';
+          $words 	= str_word_count($text, 2);
+          $pos 		= array_keys($words);
+          $text 	= substr($text, 0, $pos[$limit]) . ' ...';
       endif;
       return $text;
 }
 
 function message_teaser_shortcode() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . "messages";
+	$table_name 	= $wpdb->prefix . "messages";
 
-	$results = $wpdb->get_results('SELECT * FROM mk_messages WHERE sm_moderated = "1" LIMIT 5', OBJECT);
+	$results 		= $wpdb->get_results('SELECT * FROM mk_messages WHERE sm_moderated = "1" LIMIT 5', OBJECT);
 
 	// Construct the output
-	$the_message = "";
+	$the_message 	= "";
 
 	foreach ($results as $result) :
 		$the_message .= '<div class="message-slide matcher">';
@@ -221,7 +235,7 @@ function message_teaser_shortcode() {
 		$the_message .= '</div>';
 	endforeach;
 
-	$img_path = get_template_directory_uri() . "/build/images/globals/mail.png";
+	$img_path 		= get_template_directory_uri() . "/build/images/globals/mail.png";
 	$html = '
 		<article class="message-teaser">
 			<div class="inner clearfix">

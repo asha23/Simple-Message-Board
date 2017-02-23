@@ -207,7 +207,7 @@ class Messages_List extends WP_List_Table {
 	public function prepare_items() {
 
 		$this->_column_headers 	= $this->get_column_info();
-		$this->process_bulk_action();
+		$this->process_bulk_action(); // This is causing a problem on form submit
 		$per_page     			= $this->get_items_per_page( 'messages_per_page', 20 );
 		$current_page			= $this->get_pagenum();
 		$total_items  			= self::record_count();
