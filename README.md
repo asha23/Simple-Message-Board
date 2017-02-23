@@ -1,4 +1,4 @@
-# Wordpress Moderated Message Board Plugin
+# WordPress Moderated Message Board Plugin
 
 This is a moderated WordPress message board plugin. It works independently from the comments system and is designed for simple use.
 
