@@ -2,15 +2,15 @@
 
 ## Shortcodes
 
-```[messages_teaser]```
+``` [messages_teaser] ```
 
 Creates a frontend teaser for the message
 
-```[messages_form]```
+``` [messages_form] ```
 
 Creates a form for the message
 
-```[messages]```
+``` [messages] ```
 
 Creates full message
 
