@@ -4,7 +4,7 @@ This is a moderated WordPress message board plugin. It works independently from 
 
 A new table is created in your database called _messages - This allows you to track the messages independently of your WordPress tables.
 
-I'm aware that it's by no means perfect at this point. It has been used on a production website and works reasonably well. However there is always room for improvement :smiley:
+I'm aware that it's by no means perfect at this point. It has been used on a production website and works reasonably well. However there is always room for improvement
 
 ## Shortcodes
 
