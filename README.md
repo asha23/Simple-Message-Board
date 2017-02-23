@@ -1,6 +1,6 @@
 # Wordpress Simple Message Board Plugin
 
-This is a moderated WordPress message board plugin. It works independently from the comments system and is designed for simple use. 
+This is a moderated WordPress message board plugin. It works independently from the comments system and is designed for simple use.
 
 A new table is created in your database called _messages
 
@@ -25,3 +25,14 @@ This uses Bower for dependencies. You might want to edit these as you see fit. I
 Edit the scripts in frontend.php to adjust these if you like.
 
 Frontend.php is also where all the HTML is created, edit this as you like.
+
+# Todo
+
+1. Submit WordPress.com
+2. Add a settings page for captcha api keys
+3. Consolidate the code
+4. Add the ability to edit entries before moderation
+5. Make it platform independent. IE, remove all custom styling
+6. Add more options for the teaser - Carousel, Short list, Widget, etc.
+7. Translation functionality
+8. Fix a few annoying bugs
