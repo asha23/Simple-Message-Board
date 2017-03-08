@@ -12,8 +12,7 @@
 
 ob_start();
 
-if(is_admin()):
-	require_once(plugin_dir_path( __FILE__ ) . 'admin.php');
-else:
-	require_once(plugin_dir_path( __FILE__ ) . 'frontend.php');
-endif;
+
+require_once(plugin_dir_path( __FILE__ ) . 'admin.php');
+require_once(plugin_dir_path( __FILE__ ) . 'frontend.php');
+
